@@ -1,4 +1,8 @@
 
+
+DELIMITER //
+CREATE PROCEDURE gold.load_gold()
+BEGIN
 -- =========================================
 -- VIEW-DIMENSION_CUSTOMERS
 -- =========================================
@@ -73,4 +77,9 @@ FROM silver.crm_sales_details csd
 	ON csd.sls_cust_id=dc.customer_id
 	LEFT JOIN gold.dim_products dp
 	ON csd.sls_prd_key=dp.product_number;
+-- =========================================
+-- =========================================
+END //
+DELIMITER ;
 
+CALL gold.load_gold();
