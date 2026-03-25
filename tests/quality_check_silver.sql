@@ -38,6 +38,8 @@ select * from silver.crm_sales_details;
 select COUNT(*) from silver.crm_sales_details;
 
 select sls_ord_num from silver.crm_sales_details where sls_sales != sls_price*sls_quantity;
+SELECT * FROM silver.crm_sales_details WHERE sls_sales < 0;
+
 
 select * from silver.crm_sales_details where sls_cust_id NOT IN (SELECT cst_id from silver.crm_cust_info);
 select * from silver.crm_sales_details where sls_prd_key IN (SELECT prd_id from silver.crm_prd_info);
