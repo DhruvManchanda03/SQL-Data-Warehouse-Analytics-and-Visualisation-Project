@@ -118,9 +118,9 @@ SELECT
 	fixed_price,
 	sls_quantity,
 	CASE 
-		WHEN sls_sales <= 0 OR sls_sales IS NULL OR sls_sales != sls_quantity * ABS(fixed_price)
-		THEN sls_quantity * ABS(fixed_price)
-		ELSE sls_sales
+		WHEN sls_sales <= 0 OR sls_sales IS NULL OR sls_sales != ABS(sls_quantity *fixed_price)
+		THEN ABS(sls_quantity * fixed_price)
+		ELSE ABS(sls_sales)
 	END AS sls_sales
 FROM (
 	SELECT
@@ -134,8 +134,8 @@ FROM (
 		sls_quantity,
 		CASE 
 			WHEN sls_price <= 0 OR sls_price IS NULL
-			THEN sls_sales / NULLIF(sls_quantity,0)
-			ELSE sls_price
+			THEN abs(sls_sales) / NULLIF(sls_quantity,0)
+			ELSE abs(sls_price)
 		END AS fixed_price
 	FROM bronze.crm_sales_details
 ) t;
