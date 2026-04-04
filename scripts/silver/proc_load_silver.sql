@@ -179,7 +179,7 @@ INSERT INTO silver.erp_loc_a101(
 SELECT
 	REPLACE(cid,'-',''),
 	CASE 
-		WHEN cleaned_cntry IN ('US','USA') THEN 'United States'
+		WHEN cleaned_cntry IN ('US','USA','UNITED STATES') THEN 'United States'
 		WHEN cleaned_cntry IN ('DE','GERMANY') THEN 'Germany'
 		WHEN cleaned_cntry = 'AUSTRALIA' THEN 'Australia'
 		WHEN cleaned_cntry = 'CANADA' THEN 'Canada'
