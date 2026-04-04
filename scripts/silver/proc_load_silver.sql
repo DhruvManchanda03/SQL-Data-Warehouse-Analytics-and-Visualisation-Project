@@ -180,7 +180,7 @@ SELECT
 	REPLACE(cid,'-',''),
 	CASE 
 		WHEN cleaned_cntry IN ('US','USA') THEN 'United States'
-		WHEN cleaned_cntry = 'DE' THEN 'Germany'
+		WHEN cleaned_cntry IN ('DE','GERMANY') THEN 'Germany'
 		WHEN cleaned_cntry = 'AUSTRALIA' THEN 'Australia'
 		WHEN cleaned_cntry = 'CANADA' THEN 'Canada'
 		WHEN cleaned_cntry = 'UNITED KINGDOM' THEN 'United Kingdom'
