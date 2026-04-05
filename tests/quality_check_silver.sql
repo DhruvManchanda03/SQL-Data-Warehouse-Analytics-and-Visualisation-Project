@@ -79,3 +79,6 @@ select distinct subcat from silver.erp_px_cat_g1v2;
 select distinct maintenance from silver.erp_px_cat_g1v2;
 
 -- ---------------------------------------------------------------------------------------------------------
+ -- FIXING MISSING CATEGORY
+ INSERT INTO silver.erp_px_cat_g1v2(id,cat) VALUES('CO_PE','Components')
+ WHERE p.product_key IS NULL
