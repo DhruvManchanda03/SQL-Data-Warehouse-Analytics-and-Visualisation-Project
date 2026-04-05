@@ -1,177 +1,114 @@
 # 📊 SQL Data Warehouse & Analytics Project
 
-## 🚀 Project Overview
-
-This project demonstrates the design and implementation of a **modern SQL-based data warehouse** using the **Medallion Architecture (Bronze → Silver → Gold)** approach.
-
-The goal of this project is to:
-
-* Ingest raw data from multiple sources (CRM & ERP)
-* Clean and standardize the data
-* Transform it into **business-ready datasets**
-* Perform **analytical queries for insights**
+## 🚀 Overview
+End-to-end SQL data warehouse project using **Medallion Architecture (Bronze → Silver → Gold)** with **Power BI dashboard** for analytics and visualization.
 
 ---
 
-## 🏗️ Architecture Overview
-
-![Architecture](./assets/data_architecture.png)
-
-The project follows a **layered Medallion Architecture**:
+## 🏗️ Architecture
 
 ```
-Sources → Bronze Layer → Silver Layer → Gold Layer → Analytics
+Sources → Bronze → Silver → Gold → Analytics → Power BI
 ```
 
 ---
 
-## 🥉 Bronze Layer – Raw Data
-
-### 📌 Purpose
-
-The Bronze layer stores **raw, unprocessed data** exactly as received from source systems.
-
-### ⚙️ Key Features
-
-* Data loaded from **CSV files (CRM & ERP systems)**
-* No transformations applied
-* Preserves original data for traceability
-
-### 🧱 Characteristics
-
-* Object Type: Tables
-
-* Data Model: None (as-is)
+## 🥉 Bronze Layer (Raw)
+- Ingests data from CRM & ERP (CSV files)
+- No transformations (raw data preserved)
+- Ensures traceability
 
 ---
 
-## 🥈 Silver Layer – Cleaned & Standardized Data
-
-### 📌 Purpose
-
-The Silver layer focuses on **data cleaning, validation, and standardization**.
-
-### ⚙️ Transformations Performed
-
-* Handling NULL and missing values
-* Removing hidden characters (`\r`, `\n`, `\t`)
-* Standardizing formats (dates, text, categories)
-* Fixing inconsistent or invalid values
-* Deriving new columns (e.g., corrected price, sales)
-* Deduplication using window functions
-
-### 🧱 Characteristics
-
-* Object Type: Tables
-
-* Data Model: Still normalized (not business-ready)
+## 🥈 Silver Layer (Cleaned)
+- Handles NULLs & missing values  
+- Removes hidden characters (`\r \n \t`)  
+- Standardizes formats (dates, categories)  
+- Fixes inconsistencies  
+- Deduplicates data (window functions)  
+- Creates derived columns  
 
 ---
 
-## 🥇 Gold Layer – Business Ready Data
+## 🥇 Gold Layer (Business Ready)
+- Star schema design  
 
-### 📌 Purpose
+### Tables
+- `dim_customers`
+- `dim_products`
+- `fact_sales`
 
-The Gold layer provides **analytics-ready datasets** using a **star schema design**.
-
-### ⭐ Data Model
-
-* **Dimension Tables**
-
-  * `dim_customers`
-  * `dim_products`
-* **Fact Table**
-
-  * `fact_sales`
-
-### ⚙️ Transformations
-
-* Data integration across multiple sources
-* Business logic implementation
-* Aggregations and derived metrics
-* Surrogate key generation
-
-### 🧱 Characteristics
-
-* Object Type: Views
-* Data Model:
-
-  * Star Schema
-  * Optimized for analytics
+### Features
+- Data integration  
+- Business logic  
+- Aggregations & KPIs  
+- Surrogate keys  
 
 ---
 
-## 📊 Analytics Performed
+## 📊 Power BI Dashboard
+Single dashboard with multiple pages:
 
-Using the Gold layer, the following insights were derived:
-
-### 🔹 Customer Report (`gold.report_customers`)
-* Customer segmentation (VIP, Regular, New) and age groups  
-* Metrics: total orders, sales, quantity, products, lifespan  
-* KPIs: recency, average order value, average monthly spend  
-
-### 🔹 Product Report (`gold.report_products`)
-* Product segmentation (High, Mid, Low performance)  
-* Metrics: total orders, sales, quantity, customers, lifespan  
-* KPIs: recency, average order revenue, average monthly revenue, average selling price  
-
-### 🔹 Sales & Order Insights
-* Total sales by country and category  
-* Top-performing products  
-* Order trends and average order value
-  
-### 🔹 Order Insights
-
-* Total number of orders per country
-* Average order value (AOV)
-* Order trends over time
+- **Executive Overview** → KPIs (Revenue, Orders, Customers, AOV), trends  
+- **Sales Analysis** → Country, category, top products, trends  
+- **Customer Analysis** → Segmentation, CLV, recency  
+- **Product Analysis** → Performance, pricing, lifecycle  
 
 ---
 
-## 🧠 Key Concepts Applied
+## 📈 Analytics
 
-* Medallion Architecture (Bronze, Silver, Gold)
-* Data Cleaning & Standardization
-* Window Functions
-* Star Schema Modeling
-* Fact & Dimension Design
-* SQL Performance Optimization (Indexes, Joins)
+### Customer Report (`gold.report_customers`)
+- Segmentation (VIP, Regular, New), age groups  
+- Metrics: orders, sales, quantity, products, lifespan  
+- KPIs: recency, AOV, avg monthly spend  
+
+### Product Report (`gold.report_products`)
+- Segmentation (High / Mid / Low)  
+- Metrics: orders, sales, quantity, customers, lifespan  
+- KPIs: recency, avg revenue, ASP  
+
+### Sales & Orders
+- Sales by country & category  
+- Top products  
+- Order trends & AOV  
+- Orders per country  
+
+---
+
+## 🧠 Concepts Used
+- Medallion Architecture  
+- Data Cleaning & Transformation  
+- Window Functions  
+- Star Schema  
+- Fact & Dimension Modeling  
+- SQL Optimization  
 
 ---
 
 ## 🛠️ Tech Stack
-
-* SQL (MySQL / SQL Server concepts)
-* CSV Data Sources
-* Stored Procedures
-* Git & GitHub
+- SQL (MySQL / SQL Server)  
+- Power BI  
+- CSV Data  
+- Git & GitHub  
 
 ---
 
-## 📌 Key Learnings
-
-* Designing a scalable data warehouse architecture
-* Handling real-world dirty data issues
-* Implementing business logic in SQL
-* Writing optimized analytical queries
+## 📌 Learnings
+- Data warehouse design  
+- Handling messy data  
+- Writing analytical SQL  
+- Building business dashboards  
 
 ---
 
 ## 📈 Future Improvements
-
-* Convert views into **materialized tables for performance**
-* Add **indexes for faster query execution**
-* Implement **incremental loading**
-* Integrate with BI tools (Power BI / Tableau)
-
----
-
-## 🙌 Acknowledgements
-
-This project is inspired by real-world data engineering practices and aims to simulate an end-to-end data warehouse pipeline.
+- Materialized tables  
+- Incremental loading  
+- Query optimization (indexes)  
+- Power BI enhancements  
 
 ---
 
-## ⭐ If you like this project
-
-Give it a ⭐ on GitHub and feel free to connect!
+## ⭐ Support
+If you like this project, give it a ⭐ on GitHub!
